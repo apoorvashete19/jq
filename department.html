@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Department Information</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        .ui-grid-c > div {
+            width: 20%;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div data-role="page" id="home">
+    <div data-role="header">
+        <h1>Departments</h1>
+    </div>
+
+    <div data-role="content">
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><button class="dept-btn" data-dept-id="1">Department 1</button></div>
+            <div class="ui-block-b"><button class="dept-btn" data-dept-id="2">Department 2</button></div>
+            <div class="ui-block-c"><button class="dept-btn" data-dept-id="3">Department 3</button></div>
+            <div class="ui-block-d"><button class="dept-btn" data-dept-id="4">Department 4</button></div>
+            <div class="ui-block-e"><button class="dept-btn" data-dept-id="5">Department 5</button></div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="department-info">
+    <div data-role="header">
+        <a href="#" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+        <h1>Department Information</h1>
+    </div>
+
+    <div data-role="content" id="dept-info-content">
+        <!-- Department information will be displayed here -->
+    </div>
+</div>
+
+<div data-role="page" id="computer-engineering-info">
+    <div data-role="header">
+        <a href="#" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+        <h1>Computer Engineering Department Information</h1>
+    </div>
+
+    <div data-role="content">
+        <h2>About Computer Engineering Department</h2>
+        <p>Computer Engineering is a discipline that integrates several fields of electrical engineering and computer science required to develop computer hardware and software. It involves designing and testing computer components, such as circuits, processors, memory devices, and networks.</p>
+        
+        <h2>Courses Offered</h2>
+        <ul>
+            <li>Introduction to Computer Engineering</li>
+            <li>Computer Networks</li>
+            <li>Embedded Systems</li>
+            <li>Software Engineering</li>
+            <li>Computer Architecture</li>
+        </ul>
+        
+        <h2>Facilities</h2>
+        <p>The Computer Engineering Department offers state-of-the-art facilities including computer labs equipped with the latest hardware and software, research facilities, and collaboration spaces.</p>
+        
+        <h2>Faculty</h2>
+        <p>The department is staffed with experienced faculty members who are experts in their respective fields. They are dedicated to providing quality education and conducting cutting-edge research.</p>
+    </div>
+</div>
+
+<script>
+    $(document).on("pagecreate", function () {
+        $(".dept-btn").on("click", function () {
+            var deptId = $(this).data("dept-id");
+            if (deptId === 1) {
+                $.mobile.changePage("#computer-engineering-info");
+            } else {
+                var deptInfo = getDepartmentInfo(deptId);
+                $("#dept-info-content").html(deptInfo);
+                $.mobile.changePage("#department-info");
+            }
+        });
+    });
+
+    function getDepartmentInfo(deptId) {
+        var deptInfo = "";
+        switch (deptId) {
+            case 2:
+    deptInfo = `
+        <h2>About Information Technology Department</h2>
+        <p>Information Technology (IT) is a field that focuses on the use of computers and telecommunications to store, retrieve, transmit, and manipulate data. It encompasses a wide range of technologies and practices, including computer hardware, software, networking, and internet services.</p>
+        
+        <h2>Courses Offered</h2>
+        <ul>
+            <li>Introduction to Information Technology</li>
+            <li>Database Management Systems</li>
+            <li>Web Development</li>
+            <li>Network Security</li>
+            <li>IT Project Management</li>
+        </ul>
+        
+        <h2>Facilities</h2>
+        <p>The Information Technology Department provides modern facilities, including computer labs, specialized software, and access to online resources for research and learning.</p>
+        
+        <h2>Faculty</h2>
+        <p>Our faculty members are highly skilled professionals with extensive experience in the field of Information Technology. They are committed to delivering quality education and preparing students for successful careers in IT.</p>
+    `;
+    break;
+
+        
+            
+            case 3:
+    deptInfo = `
+        <h2>About Electronics and Telecommunication Department</h2>
+        <p>The Electronics and Telecommunication (ENTC) department focuses on the study of electronic devices and systems, as well as communication technologies. It covers a wide range of topics including analog and digital electronics, signal processing, wireless communication, and more.</p>
+        
+        <h2>Courses Offered</h2>
+        <ul>
+            <li>Electronic Circuits</li>
+            <li>Communication Systems</li>
+            <li>Microprocessors and Microcontrollers</li>
+            <li>Digital Signal Processing</li>
+            <li>Telecommunication Networks</li>
+        </ul>
+        
+        <h2>Facilities</h2>
+        <p>The ENTC Department provides state-of-the-art laboratories equipped with modern equipment for practical experiments and research. It also offers access to simulation software and industry-standard tools for students' projects and studies.</p>
+        
+        <h2>Faculty</h2>
+        <p>Our faculty members are highly qualified professionals with expertise in various areas of electronics and telecommunication. They are dedicated to providing quality education, conducting research, and guiding students in their academic and professional endeavors.</p>
+    `;
+    break;
+
+            case 4:
+            
+    deptInfo = `
+        <h2>About Mechanical Engineering Department</h2>
+        <p>Mechanical Engineering is a branch of engineering that focuses on the design, analysis, and manufacturing of mechanical systems. It encompasses a wide range of disciplines, including thermodynamics, fluid mechanics, materials science, and machine design.</p>
+        
+        <h2>Courses Offered</h2>
+        <ul>
+            <li>Engineering Mechanics</li>
+            <li>Thermodynamics</li>
+            <li>Fluid Mechanics</li>
+            <li>Machine Design</li>
+            <li>Manufacturing Processes</li>
+        </ul>
+        
+        <h2>Facilities</h2>
+        <p>The Mechanical Engineering Department is equipped with state-of-the-art laboratories, including those for thermal engineering, fluid mechanics, and materials testing. It also provides access to computer-aided design (CAD) software and prototyping facilities.</p>
+        
+        <h2>Faculty</h2>
+        <p>Our faculty members are experienced professionals with expertise in various areas of mechanical engineering. They are committed to providing students with a strong foundation in engineering principles, practical skills, and innovative thinking.</p>
+    `;
+    break;
+
+        
+            
+            case 5:
+            deptInfo = `
+                <h2>About Artificial Intelligence Department</h2>
+                <p>The Artificial Intelligence (AI) department focuses on the study and development of intelligent systems that can simulate human intelligence. It encompasses various subfields, including machine learning, natural language processing, robotics, and computer vision.</p>
+                
+                <h2>Courses Offered</h2>
+                <ul>
+                    <li>Introduction to Artificial Intelligence</li>
+                    <li>Machine Learning</li>
+                    <li>Natural Language Processing</li>
+                    <li>Robotics</li>
+                    <li>Computer Vision</li>
+                </ul>
+                
+                <h2>Research Areas</h2>
+                <p>The AI Department is actively involved in research on cutting-edge AI technologies, such as deep learning, reinforcement learning, autonomous systems, and AI ethics.</p>
+                
+                <h2>Faculty</h2>
+                <p>Our faculty members are leading experts in the field of artificial intelligence, with extensive experience in both research and industry. They are dedicated to advancing the frontiers of AI technology and educating the next generation of AI professionals.</p>
+            `;
+            break;
+        
+           
+        
+            default:
+                deptInfo = "Department information not available.";
+        }
+        return deptInfo;
+    }
+</script>
+
+</body>
+</html>
